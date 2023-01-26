@@ -194,11 +194,13 @@ st.dataframe(df)
 fig, ax = plt.subplots(2,4, figsize=(12,6), sharey=True)
 ax = ax.flatten()
 
-tt = np.linspace(180, 1)
+st.write("Daily Evolution of premium from 3M to expiry, with current spot and vol")
+tt = np.linspace(90, 1)
 for strat in range(1, 9):
     s = Strategy(strat)
     px = [s.get_price(T=t/360) for t in tt]
     ax[strat-1].plot(px)
     ax[strat-1].set_title(s.label)
+    ax[strat-1].set_xticklabels([])    
 plt.tight_layout()
 st.pyplot(fig)
